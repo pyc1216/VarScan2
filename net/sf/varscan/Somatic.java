@@ -1602,10 +1602,17 @@ public class Somatic {
 				 {
 					 // Adjust for normal purity (i.e., tumor contamination of normal in AML) //
 					 double normalMinVarFreq = minVarFreq;
+					 // Add a parameter normalMinVarFreqDecideGenotype. --ypu //
+					 double normalMinVarFreqDecideGenotype = minVarFreq;
+					 if(minVarFreq < 0.03)
+					 {
+						 normalMinVarFreqDecideGenotype = 0.03;
+						 // System.err.println("Normal min var freq for decide genotype:\t" + normalMinVarFreqDecideGenotype);
+					 }
 
 					 if(normalPurity < 1.00)
 					 {
-						 normalMinVarFreq = (minVarFreq / normalPurity);
+						 normalMinVarFreq = (normalMinVarFreq / normalPurity);
 					 }
 
 					 HashMap<String, String> readCountsNormal = VarScan.getReadCounts(refBase, normalBases, normalQualities, minAvgQual, normalMapQuals);
@@ -1796,15 +1803,18 @@ public class Somatic {
 											// CASE 2E: Variant alleles match but difference significant //
 											else if(tumorAllele2.equals(normalAllele2))
 											{
-												if(normalFreq > minVarFreq)
+												// Use normalMinVarFreqDecideGenotype instead of minVarFreq. --ypu //
+												if(normalFreq > normalMinVarFreqDecideGenotype)
 												{
 													somaticStatus = "Germline";
 												}
-												else if(freqDiff >= 0.30 && tumorFreq > normalFreq)
+												// Use 0.20 instead of 0.30, more sensitive --ypu //
+												else if(freqDiff >= 0.20 && tumorFreq > normalFreq)
 												{
 													somaticStatus = "Somatic";
 												}
-												else if(freqDiff <= -0.30 && tumorFreq < normalFreq)
+												// Use 0.20 instead of 0.30, more sensitive --ypu //
+												else if(freqDiff <= -0.20 && tumorFreq < normalFreq)
 												{
 													somaticStatus = "LOH";
 												}
