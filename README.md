@@ -2,9 +2,13 @@
 version=v2.3.9.a
 
 1. Modify function **comparePositions()** in *Somatic.java*
+
 Use **normalMinVarFreqDecideGenotype** instead of **MinVarFreq** to decide Normal's genotype when Tumor and Normal are both HET(**CASE 2E**).
+
 **normalMinVarFreqDecideGenotype** = 0.03, when **MinVarFreq** < 0.03, else = **MinVarFreq**.
+
 It make sense when **MinVarFreq** is pretty low(e.g 0.005), avoid taking normal HET falsely.
+
 This may call **MORE** somatic snp/indel!
 
 
