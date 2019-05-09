@@ -1,0 +1,13 @@
+{
+Varscan.java
+	getReadCounts
+readCounts = {'A': 4, 'T': 5, 'DEL-15-GGAATTAAGAGAAGC': 5, ...}
+readCountsPlus = {'ref': 3, 'A': 4, ...}
+strandsSeen = {'ref': '++-', 'A': '+-+-', ...}
+qualitySum = {'ref': 100, 'A': 101, ...}
+
+
+String[] outString = reads2 + "\t" + strands2 + "\t" + avg_qual2 + "\t" + avg_map_qual2 + "\t" + reads2plus + "\t" + reads2minus
+results = {'ref' : outString1, 'A': outString2, 'DEL-15-GGAATTAAGAGAAGC': outString3, ....}
+
+

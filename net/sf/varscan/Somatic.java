@@ -1679,6 +1679,18 @@ public class Somatic {
 									normalReads2 = Integer.parseInt(alleleContents[0]);
 									normalCoverage = normalReads1 + normalReads2;
 								}
+								// tumorConsensus is INDEL and normalConsensus is SNP, that means . --ypu //
+								else if(!normalAllele2.equals(refBase) && tumorConsensus.contains("/") && !normalConsensus.contains("/"))
+								{
+									normalReads2 = 0;
+									//double normalConsensusFreq = (double) normalReads2 / (double) normalCoverage;
+									//double tumorConsensusFreq = (double) tumorReads2 / (double) tumorCoverage;
+									// if(normalConsensusFreq < tumorConsensusFreq)
+									//{
+									//	normalReads2 = 0;
+									//}
+								}
+								// tumorConsensus is INDEL and normalConsensus is SNP, that means . --ypu //
 							}
 							else if(!normalAllele2.equals(refBase))
 							{
