@@ -1672,6 +1672,9 @@ public class Somatic {
 
 							if(!tumorAllele2.equals(refBase)) // normalAllele2.equals(refBase) &&
 							{
+								// System.err.println("if\t" + tumorAllele2); // debug --ypu
+								// System.err.println("\t\t" + normalConsensus + "\t" + normalAllele2 + "\t" + refBase + "\t" + tumorConsensus + "\t" + normalConsensus); // debug --ypu
+								// System.err.println("\t\t\t" + normalReads2); // debug --ypu
 								allele2 = tumorAllele2;
 								if(readCountsNormal.containsKey(tumorAllele2))
 								{
@@ -1679,18 +1682,26 @@ public class Somatic {
 									normalReads2 = Integer.parseInt(alleleContents[0]);
 									normalCoverage = normalReads1 + normalReads2;
 								}
-								// tumorConsensus is INDEL and normalConsensus is SNP, that means . --ypu //
-								else if(!normalAllele2.equals(refBase) && tumorConsensus.contains("/") && !normalConsensus.contains("/"))
+								// minReads2 = 2, when normalReads2 = 1. --ypu //
+								else if(normalAllele2.equals(refBase))
 								{
 									normalReads2 = 0;
-									//double normalConsensusFreq = (double) normalReads2 / (double) normalCoverage;
-									//double tumorConsensusFreq = (double) tumorReads2 / (double) tumorCoverage;
-									// if(normalConsensusFreq < tumorConsensusFreq)
-									//{
-									//	normalReads2 = 0;
-									//}
 								}
-								// tumorConsensus is INDEL and normalConsensus is SNP, that means . --ypu //
+								// minReads2 = 2, when normalReads2 = 1. --ypu //
+								
+								// tumorConsensus mot match normalConsensus. --ypu //
+								//else if(!normalAllele2.equals(refBase) && tumorConsensus.contains("/") && !normalConsensus.contains("/"))
+								//{
+								//	normalReads2 = 0;
+								//	System.err.println("else if\t" + normalReads2); // debug
+								//	//double normalConsensusFreq = (double) normalReads2 / (double) normalCoverage;
+								//	//double tumorConsensusFreq = (double) tumorReads2 / (double) tumorCoverage;
+								//	// if(normalConsensusFreq < tumorConsensusFreq)
+								//	//{
+								//	//	normalReads2 = 0;
+								//	//}
+								//}
+								// tumorConsensus mot match normalConsensus. --ypu //
 							}
 							else if(!normalAllele2.equals(refBase))
 							{
