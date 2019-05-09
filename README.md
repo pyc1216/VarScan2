@@ -24,7 +24,7 @@ test_data/test.snp.vcf is my version's result, the other is origin version's.
     +chr7	140453136	.	A	T	.	PASS	DP=2279;SS=1;SSC=255;GPV=1E0;SPV=8.1581E-59	GT:GQ:DP:RD:AD:FREQ:DP4	0/1:.:378:372:6:1.59%:258,114,5,1	0/1:.:1901:1189:712:37.45%:1001,188,636,76
     
 
-2. Fix a bug: When normalReads2 = 1 < minReads2 = 2, this may make diffPvalue > 0.05. Set normalReads2 = 0, if normalAllele2.equals(refBase).
+2. Fix a bug: When **normalReads2** = 1 < **minReads2** = 2, this may make **diffPvalue** > *0.05*. Set **normalReads2** = 0, if normalAllele2.equals(refBase).
 
 #### my version:
     chr7	55242464	.	AGGAATTAAGAGAAGC	A	.	PASS	DP=1819; SOMATIC;SS=2;SSC=6;GPV=1E0;SPV=2.3063E-1	GT:GQ:DP:RD:AD:FREQ:DP4	0/0:.:305:304:0:0%:172,132,1,0	0/1:.:1514:1506:8:0.53%:692,814,6,2
