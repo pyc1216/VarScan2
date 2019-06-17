@@ -1,5 +1,5 @@
 # VarScan2
-version=v2.3.9.b
+version=v2.3.9.b.1
 
 1. Modify function **comparePositions()** in *Somatic.java*
 
@@ -32,3 +32,5 @@ test_data/test.snp.vcf is my version's result, the other is origin version's.
 #### origin version:
     chr7    55242464	.	AGGAATTAAGAGAAGC	A	.	PASS	DP=1819;SS=0;SSC=0;GPV=1E0;SPV=5.3897E-1	GT:GQ:DP:RD:AD:FREQ:DP4	0/0:.:305:304:1:0.33%:172,132,1,0	0/1:.:1514:1506:8:0.53%:692,814,6,2
     
+
+3. Modify **normalMinVarFreqDecideGenotype** from 0.03 to 0.1 .
