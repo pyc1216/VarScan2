@@ -1604,9 +1604,9 @@ public class Somatic {
 					 double normalMinVarFreq = minVarFreq;
 					 // Add a parameter normalMinVarFreqDecideGenotype. --ypu //
 					 double normalMinVarFreqDecideGenotype = minVarFreq;
-					 if(minVarFreq < 0.03)
+					 if(minVarFreq < 0.1)
 					 {
-						 normalMinVarFreqDecideGenotype = 0.03;
+						 normalMinVarFreqDecideGenotype = 0.1;
 						 // System.err.println("Normal min var freq for decide genotype:\t" + normalMinVarFreqDecideGenotype);
 					 }
 
