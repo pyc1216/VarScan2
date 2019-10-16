@@ -1,5 +1,5 @@
 # VarScan2
-version=v2.3.9.a
+version=v2.3.9.a.1
 
 1. Modify function **comparePositions()** in *Somatic.java*
 
