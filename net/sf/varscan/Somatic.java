@@ -1711,6 +1711,17 @@ public class Somatic {
 
 							// Calculate the frequency difference //
 							double freqDiff = tumorFreq - normalFreq;
+							// Calculate the frequency quotient --ypu //
+							double freqQuot = 0.00;
+							if(normalFreq == 0.00)
+							{
+								freqQuot = 100.00;
+							}
+							else
+							{
+								freqQuot = tumorFreq / normalFreq;
+							}
+							// End --ypu //
 
 							 // P-value of significant difference //
 							diffPvalue = VarScan.getSignificance(normalReads1, normalReads2, tumorReads1, tumorReads2);
@@ -1809,12 +1820,13 @@ public class Somatic {
 													somaticStatus = "Germline";
 												}
 												// Use 0.20 instead of 0.30, more sensitive --ypu //
-												else if(freqDiff >= 0.20 && tumorFreq > normalFreq)
+												// Add another condition: quotient of frequency, more sensitive  --ypu //
+												else if(freqDiff >= 0.20 || freqQuot >= 10.00)
 												{
 													somaticStatus = "Somatic";
 												}
 												// Use 0.20 instead of 0.30, more sensitive --ypu //
-												else if(freqDiff <= -0.20 && tumorFreq < normalFreq)
+												else if(freqDiff <= -0.20 || freqQuot <= 0.10)
 												{
 													somaticStatus = "LOH";
 												}
@@ -1827,6 +1839,8 @@ public class Somatic {
 													int totalCoverage = totalReads1 + totalReads2;
 													pValue = VarScan.getSignificance(totalCoverage, 0, totalReads1, totalReads2);
 												}
+												// debug --ypu//
+												// System.err.println("[DEBUG] lineNormal:\t" + lineNormal + "lineTumor:\t" + lineNormal + "somaticStatus:\t" + somaticStatus + "freqQuot:\t" + freqQuot);
 				//								else
 				//								{
 				//									somaticStatus = "LOH";
