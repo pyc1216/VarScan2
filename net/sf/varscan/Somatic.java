@@ -1680,6 +1680,12 @@ public class Somatic {
 									normalCoverage = normalReads1 + normalReads2;
 								}
 							}
+							// Add this 'else if' block to set normalReads2 = 0, when normalReads2 = 1 < minReads2(default=2) happened. --ypu //
+							else if(normalAllele2.equals(refBase))
+							{
+								normalReads2 = 0;
+							}
+							// end. --ypu //
 							else if(!normalAllele2.equals(refBase))
 							{
 								allele2 = normalAllele2;
