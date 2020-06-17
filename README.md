@@ -43,6 +43,15 @@ In CASE 2E(Variant alleles match but difference significant), if freqQuot >= 10.
     -chr2    29416481        .       T       C       .       PASS    DP=2030;SOMATIC;SS=2;SSC=198;GPV=1E0;SPV=1.3145E-20     GT:GQ:DP:RD:AD:FREQ:DP4 0/1:.:1078:1073:4:0.37%:859,214,3,1     0/1:.:952:877:74:7.78%:744,133,64,10
     +chr2    29416481        .       T       C       .       PASS    DP=2030;SS=1;SSC=198;GPV=1.5554E-24;SPV=1.3145E-20      GT:GQ:DP:RD:AD:FREQ:DP4 0/1:.:1078:1073:4:0.37%:859,214,3,1     0/1:.:952:877:74:7.78%:744,133,64,10
 
+~~## NOTE
+This version **NOT** fix the bug: When **normalReads2** = 1 < **minReads2** = 2, this may make **diffPvalue** > *0.05*. Set **normalReads2** = 0, if normalAllele2.equals(refBase), which is fixed in other branch(v2.3.9.b). ~~
 
-## NOTE
-This version **NOT** fix the bug: When **normalReads2** = 1 < **minReads2** = 2, this may make **diffPvalue** > *0.05*. Set **normalReads2** = 0, if normalAllele2.equals(refBase), which is fixed in other branch(v2.3.9.b).
+3. Fix a bug: When **normalReads2** = 1 < **minReads2** = 2, this may make **diffPvalue** > *0.05*. Set **normalReads2** = 0, if normalAllele2.equals(refBase).
+
+#### my version:
+    chr7	55242464	.	AGGAATTAAGAGAAGC	A	.	PASS	DP=1819; SOMATIC;SS=2;SSC=6;GPV=1E0;SPV=2.3063E-1	GT:GQ:DP:RD:AD:FREQ:DP4	0/0:.:305:304:0:0%:172,132,1,0	0/1:.:1514:1506:8:0.53%:692,814,6,2
+    
+#### origin version:
+    chr7    55242464	.	AGGAATTAAGAGAAGC	A	.	PASS	DP=1819;SS=0;SSC=0;GPV=1E0;SPV=5.3897E-1	GT:GQ:DP:RD:AD:FREQ:DP4	0/0:.:305:304:1:0.33%:172,132,1,0	0/1:.:1514:1506:8:0.53%:692,814,6,2
+
+
